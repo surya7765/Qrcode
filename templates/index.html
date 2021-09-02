@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&family=Yanone+Kaffeesatz:wght@500&display=swap" rel="stylesheet">
+  <title>Qr code generator</title>
+</head>
+<body style="background-color: black">
+<div class="container white z-depth-5" style="margin-top: 100px; border-radius:20px;border: 5px solid green;">
+  <h1 class="center green-text" style="padding-top:20px; font-family:'Varela Round',cursive">QR code Generator</h1>
+  <div class="row">
+    <form action="" class="col s12" method="post">
+      {% csrf_token %}
+      <div class="row" style="padding-left:30%;">
+        <div class="input-field col s6">
+          <input id="input_text" type="text" name="url" required>
+          <label for="input_text">Input Urls</label>
+        </div>
+      </div>
+      <div class="col s6 " style="padding-left:40%; margin-bottom:50px;">
+        <button id="Submit" class="btn waves-effect waves-light green z-depth-2" type="submit">Generate
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+{% if url %}
+<div class="container white z-depth-5" style="margin-top: 100px; border-radius:20px;border: 5px solid green;">
+  <h1 class="center green-text" style="padding-top:20px; font-family:'Varela Round',cursive">QR code Generated</h1>
+  <div class="row">
+    <img src={% static qrcode.png %} alt="Qr code">
+  </div>
+</div>
+{% endif %}
+
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</html>
